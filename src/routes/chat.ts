@@ -16,7 +16,7 @@ const chatRouter = new Hono();
  *
  * @returns {BaseResponse<ChatResponse>} The GenUI IRenderable output
  */
-chatRouter.post("/", async (c) => {
+chatRouter.post("/", async c => {
   const userId = c.req.param("userId")!;
   const tokenUserId = c.get("userId");
 
@@ -53,13 +53,14 @@ chatRouter.post("/", async (c) => {
     if (!res.ok) {
       const text = await res.text();
       console.error(`ShapeShyft error ${res.status}: ${text}`);
-      return c.json(
-        errorResponse(`AI service error: ${res.status}`),
-        502
-      );
+      return c.json(errorResponse(`AI service error: ${res.status}`), 502);
     }
 
-    const json = await res.json();
+    const json = (await res.json()) as {
+      success: boolean;
+      data?: { output: unknown };
+      error?: string;
+    };
     if (!json.success) {
       return c.json(
         errorResponse(json.error ?? "AI service returned an error"),
@@ -67,7 +68,7 @@ chatRouter.post("/", async (c) => {
       );
     }
 
-    return c.json(successResponse({ output: json.data.output }));
+    return c.json(successResponse({ output: json.data?.output }));
   } catch (err) {
     console.error("ShapeShyft request failed:", err);
     return c.json(errorResponse("Failed to reach AI service"), 502);

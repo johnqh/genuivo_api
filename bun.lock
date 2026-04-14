@@ -6,7 +6,7 @@
       "name": "starter_api",
       "dependencies": {
         "@sudobility/auth_service": "^1.1.15",
-        "@sudobility/starter_types": "^0.0.13",
+        "@sudobility/genuivo_types": "^0.0.14",
         "@sudobility/types": "^1.9.61",
         "drizzle-orm": "^0.44.2",
         "firebase-admin": "^13.4.0",
@@ -223,7 +223,9 @@
 
     "@sudobility/auth_service": ["@sudobility/auth_service@1.1.15", "", { "peerDependencies": { "@sudobility/types": "^1.9.61", "firebase-admin": "^13.0.0" } }, "sha512-YBWtsccnwwl5lpPbIdXUdbsJvO+gcPp4uGu2rz20Hs0CcaG3/PBaDQekNGjwOZ5nxCZskhft//HoXmStc0610A=="],
 
-    "@sudobility/starter_types": ["@sudobility/starter_types@0.0.13", "", { "peerDependencies": { "@sudobility/types": "^1.9.61" } }, "sha512-jPGZZnYOfLIKefnSlHr3huXNT+lQvDmp/1QsOvP/Djlwl92t9Cg4wc8KOvSJuNtRQyhkdiWSP+5PbjeN576rHw=="],
+    "@sudobility/genui_types": ["@sudobility/genui_types@0.0.1", "", {}, "sha512-upYoJVpy2y+cgIW2TwJtMuPhxzis42Dk5X6UtViTSh61GwnWofwK2atXsOrtDXPFj9vMrxJOVEOEu8UDR90p7g=="],
+
+    "@sudobility/genuivo_types": ["@sudobility/genuivo_types@0.0.14", "", { "peerDependencies": { "@sudobility/genui_types": "^0.0.1", "@sudobility/types": "^1.9.61" } }, "sha512-YKLHw7sqRGR33qPZUKrg7M9H0hmQACqT18FpfcxSG6zxJtjti2krbRNUduv9n3p70WcAaiDMKKkpmI/LnzB1fA=="],
 
     "@sudobility/types": ["@sudobility/types@1.9.61", "", {}, "sha512-SODGpstB/iKfK3H/4BvJx/FBcc1h3gutUjGotyxN19VnOfWyzaDoEmW7eyoxOAYhZyXMXagSiii+NIEZvuxKog=="],
 
