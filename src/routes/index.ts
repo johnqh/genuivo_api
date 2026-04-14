@@ -3,6 +3,7 @@ import { firebaseAuthMiddleware } from "../middleware/firebaseAuth";
 import usersRouter from "./users";
 import historiesRouter from "./histories";
 import historiesTotalRouter from "./historiesTotal";
+import chatRouter from "./chat";
 
 /**
  * Aggregated API routes for the `/api/v1` prefix.
@@ -26,6 +27,7 @@ const authRoutes = new Hono();
 authRoutes.use("*", firebaseAuthMiddleware);
 authRoutes.route("/users/:userId", usersRouter);
 authRoutes.route("/users/:userId/histories", historiesRouter);
+authRoutes.route("/users/:userId/chat", chatRouter);
 routes.route("/", authRoutes);
 
 export default routes;
