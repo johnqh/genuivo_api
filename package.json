@@ -1,0 +1,46 @@
+{
+  "name": "genuivo_api",
+  "version": "1.0.16",
+  "private": true,
+  "description": "Starter API - Hono backend with PostgreSQL + Drizzle ORM",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "build": "bun build src/index.ts --outdir dist --target bun",
+    "start": "bun dist/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "bunx tsc --noEmit",
+    "lint": "bunx eslint src/",
+    "lint:fix": "bunx eslint src/ --fix",
+    "format": "bunx prettier --write \"src/**/*.ts\"",
+    "format:check": "bunx prettier --check \"src/**/*.ts\"",
+    "verify": "bun run typecheck && bun run lint && bun run test && bun run build"
+  },
+  "dependencies": {
+    "@sudobility/auth_service": "^1.1.15",
+    "@sudobility/genuivo_types": "^0.0.13",
+    "@sudobility/types": "^1.9.61",
+    "drizzle-orm": "^0.44.2",
+    "firebase-admin": "^13.4.0",
+    "hono": "^4.7.0",
+    "postgres": "^3.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.38.0",
+    "@types/node": "^24.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^16.4.0",
+    "prettier": "^3.7.4",
+    "typescript": "~5.9.3",
+    "vitest": "^4.0.15"
+  },
+  "license": "BUSL-1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sudobility-usf/starter_api.git"
+  }
+}
