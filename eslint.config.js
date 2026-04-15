@@ -42,6 +42,7 @@ export default [
         Response: 'readonly',
         Request: 'readonly',
         AbortController: 'readonly',
+        AbortSignal: 'readonly',
         URL: 'readonly',
         URLSearchParams: 'readonly',
         Headers: 'readonly',

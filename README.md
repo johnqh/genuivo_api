@@ -18,6 +18,9 @@ cp .env.example .env   # Configure environment variables
 | `FIREBASE_CLIENT_EMAIL` | Firebase service account email | required |
 | `FIREBASE_PRIVATE_KEY` | Firebase service account private key | required |
 | `SITEADMIN_EMAILS` | Comma-separated admin emails | optional |
+| `SHAPESHYFT_API_URL` | ShapeShyft chat endpoint | required for chat |
+| `SHAPESHYFT_API_KEY` | ShapeShyft API key | required for chat |
+| `SHAPESHYFT_TIMEOUT_MS` | Upstream chat timeout in milliseconds | `120000` |
 | `PORT` | Server port | `8022` |
 
 Note: `FIREBASE_PRIVATE_KEY` often needs newline escaping (`\\n` -> `\n`) depending on your environment.

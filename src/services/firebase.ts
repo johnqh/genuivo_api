@@ -5,7 +5,7 @@ import {
   isSiteAdmin,
   isAnonymousUser,
 } from "@sudobility/auth_service";
-import { getRequiredEnv, getEnv } from "../lib/env-helper";
+import { getEnv } from "../lib/env-helper";
 
 /**
  * Whether the application is running in test mode.
@@ -16,15 +16,55 @@ import { getRequiredEnv, getEnv } from "../lib/env-helper";
 const isTestMode =
   getEnv("NODE_ENV") === "test" || getEnv("BUN_ENV") === "test";
 
-if (!isTestMode) {
+const firebaseConfig = {
+  projectId: getEnv("FIREBASE_PROJECT_ID"),
+  clientEmail: getEnv("FIREBASE_CLIENT_EMAIL"),
+  privateKey: getEnv("FIREBASE_PRIVATE_KEY"),
+};
+
+let authInitialized = false;
+
+function getMissingFirebaseEnvVars(): string[] {
+  const missing: string[] = [];
+
+  if (!firebaseConfig.projectId) {
+    missing.push("FIREBASE_PROJECT_ID");
+  }
+
+  if (!firebaseConfig.clientEmail) {
+    missing.push("FIREBASE_CLIENT_EMAIL");
+  }
+
+  if (!firebaseConfig.privateKey) {
+    missing.push("FIREBASE_PRIVATE_KEY");
+  }
+
+  return missing;
+}
+
+function ensureFirebaseInitialized(): void {
+  if (isTestMode || authInitialized) {
+    return;
+  }
+
+  const missingVars = getMissingFirebaseEnvVars();
+
+  if (missingVars.length > 0) {
+    throw new Error(
+      `Firebase authentication is not configured. Missing environment variables: ${missingVars.join(", ")}`
+    );
+  }
+
   initializeAuth({
     firebase: {
-      projectId: getRequiredEnv("FIREBASE_PROJECT_ID"),
-      clientEmail: getRequiredEnv("FIREBASE_CLIENT_EMAIL"),
-      privateKey: getRequiredEnv("FIREBASE_PRIVATE_KEY"),
+      projectId: firebaseConfig.projectId!,
+      clientEmail: firebaseConfig.clientEmail!,
+      privateKey: firebaseConfig.privateKey!,
     },
     siteAdminEmails: getEnv("SITEADMIN_EMAILS"),
   });
+
+  authInitialized = true;
 }
 
 /**
@@ -49,8 +89,14 @@ export async function verifyIdToken(token: string) {
   if (isTestMode) {
     throw new Error("Firebase verification not available in test mode");
   }
+
+  ensureFirebaseInitialized();
+
   return cachedVerifier.verify(token);
 }
 
 export { isSiteAdmin, isAnonymousUser };
-export { getFirebaseUserInfo as getUserInfo };
+export async function getUserInfo(uid: string) {
+  ensureFirebaseInitialized();
+  return getFirebaseUserInfo(uid);
+}
