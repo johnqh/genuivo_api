@@ -83,14 +83,14 @@ Tables are created via raw SQL (no migration files). The DB connection uses a Pr
 | `FIREBASE_CLIENT_EMAIL` | Firebase service account email | required |
 | `FIREBASE_PRIVATE_KEY` | Firebase service account private key | required |
 | `SITEADMIN_EMAILS` | Comma-separated admin emails | optional |
-| `PORT` | Server port | `8022` |
+| `PORT` | Server port | `8026` |
 
 ## Related Projects
 
 - **genuivo_types** — Shared TypeScript type definitions; this project imports request/response types and helpers from it
 - **genuivo_client** — API client SDK that consumes this server's HTTP endpoints
 - **genuivo_lib** — Business logic library that uses genuivo_client to talk to this API
-- **genuivo_app** — Web frontend that calls this API (both default to port 8022)
+- **genuivo_app** — Web frontend that calls this API (both default to port 8026)
 - **genuivo_app_rn** — React Native app that calls this API
 
 Uses `@sudobility/auth_service` for Firebase token verification with caching.
@@ -108,7 +108,7 @@ Uses `@sudobility/auth_service` for Firebase token verification with caching.
 ## Gotchas
 
 - Database tables are created via raw SQL on startup, NOT via Drizzle migrations -- do not create migration files
-- The default port is `8022`, matching `genuivo_app`'s default `VITE_API_URL` of `localhost:8022`
+- The default port is `8026`, matching `genuivo_app`'s default `VITE_API_URL` of `localhost:8026`
 - Anonymous Firebase users are blocked with 403 -- only fully authenticated users are allowed
 - The `userId` in route paths (`:userId`) is the Firebase UID, not a database-generated ID
 - The DB Proxy pattern means connection errors only surface on first actual query, not at startup

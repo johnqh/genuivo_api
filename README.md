@@ -21,7 +21,7 @@ cp .env.example .env   # Configure environment variables
 | `SHAPESHYFT_API_URL` | ShapeShyft chat endpoint | required for chat |
 | `SHAPESHYFT_API_KEY` | ShapeShyft API key | required for chat |
 | `SHAPESHYFT_TIMEOUT_MS` | Upstream chat timeout in milliseconds | `120000` |
-| `PORT` | Server port | `8022` |
+| `PORT` | Server port | `8026` |
 
 Note: `FIREBASE_PRIVATE_KEY` often needs newline escaping (`\\n` -> `\n`) depending on your environment.
 

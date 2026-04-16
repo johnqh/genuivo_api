@@ -46,11 +46,11 @@ RUN mkdir -p /app/logs && \
 USER appuser
 
 # Expose port
-EXPOSE 8022
+EXPOSE 8026
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=15s --start-period=30s --retries=3 \
-  CMD curl -f http://localhost:${PORT:-8022}/health || exit 1
+  CMD curl -f http://localhost:${PORT:-8026}/health || exit 1
 
 # Use dumb-init as process manager
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
