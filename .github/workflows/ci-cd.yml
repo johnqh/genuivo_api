@@ -1,5 +1,5 @@
 ---
-# CI/CD workflow for starter_api
+# CI/CD workflow for genuivo_api
 # - main branch: Runs tests and deploys to Docker Hub
 # - develop branch: Runs tests only
 
@@ -24,7 +24,7 @@ jobs:
   cicd:
     uses: johnqh/workflows/.github/workflows/unified-cicd.yml@main
     with:
-      docker-image-name: "starter_api"
+      docker-image-name: "genuivo_api"
       skip-npm-publish: true # This is an API server, not an NPM library
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
