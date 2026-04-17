@@ -1,6 +1,6 @@
 {
   "name": "genuivo_api",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "private": true,
   "description": "Starter API - Hono backend with PostgreSQL + Drizzle ORM",
   "scripts": {

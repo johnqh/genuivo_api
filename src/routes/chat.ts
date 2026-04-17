@@ -5,6 +5,7 @@ import {
   type ChatRequest,
 } from "@sudobility/genuivo_types";
 import { getEnv } from "../lib/env-helper";
+import { verifyIdToken } from "../services/firebase";
 
 const chatRouter = new Hono();
 const DEFAULT_CHAT_TIMEOUT_MS = 120000;
@@ -17,19 +18,37 @@ type ShapeShyftErrorResponse = {
 };
 
 /**
- * POST / - Send a chat request to ShapeShyft and return the GenUI response.
- *
- * Proxies the request to the ShapeShyft AI endpoint using the server-side
- * API key. The client never sees the ShapeShyft credentials.
- *
- * @returns {BaseResponse<ChatResponse>} The GenUI IRenderable output
+ * Check if the request has a valid Firebase auth token.
+ * Returns true if authenticated, false if not. Does not reject.
+ */
+async function isAuthenticated(c: any): Promise<boolean> {
+  const authHeader = c.req.header("Authorization");
+  if (!authHeader) return false;
+
+  const [type, token] = authHeader.split(" ");
+  if (type !== "Bearer" || !token) return false;
+
+  try {
+    await verifyIdToken(token);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * POST / - Chat request. Web search is enabled for authenticated users only.
  */
 chatRouter.post("/", async c => {
-  const userId = c.req.param("userId")!;
-  const tokenUserId = c.get("userId");
+  let body: ChatRequest;
+  try {
+    body = await c.req.json<ChatRequest>();
+  } catch {
+    return c.json(errorResponse("Invalid JSON body"), 400);
+  }
 
-  if (userId !== tokenUserId && !c.get("siteAdmin")) {
-    return c.json(errorResponse("Not authorized"), 403);
+  if (!body.request || typeof body.request !== "string") {
+    return c.json(errorResponse("Missing required field: request"), 400);
   }
 
   const shapeshyftUrl = getEnv("SHAPESHYFT_API_URL");
@@ -43,23 +62,14 @@ chatRouter.post("/", async c => {
     return c.json(errorResponse("Chat service not configured"), 503);
   }
 
-  let body: ChatRequest;
-  try {
-    body = await c.req.json<ChatRequest>();
-  } catch {
-    return c.json(errorResponse("Invalid JSON body"), 400);
-  }
-
-  if (!body.request || typeof body.request !== "string") {
-    return c.json(errorResponse("Missing required field: request"), 400);
-  }
+  const webSearch = await isAuthenticated(c);
 
   try {
     const url = `${shapeshyftUrl}?api_key=${encodeURIComponent(shapeshyftKey)}`;
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ request: body.request }),
+      body: JSON.stringify({ request: body.request, web_search: webSearch }),
       signal: AbortSignal.timeout(
         Number.isFinite(shapeshyftTimeoutMs) && shapeshyftTimeoutMs > 0
           ? shapeshyftTimeoutMs

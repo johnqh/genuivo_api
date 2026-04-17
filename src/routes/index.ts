@@ -10,6 +10,7 @@ import chatRouter from "./chat";
  *
  * Route structure:
  * - **Public** (no auth): `/histories/total` - Global history total
+ * - **Public** (optional auth): `/chat` - Chat (web search enabled for authenticated users)
  * - **Authenticated**: `/users/:userId` - User profile
  * - **Authenticated**: `/users/:userId/histories` - User history CRUD with pagination
  *
@@ -21,13 +22,13 @@ const routes = new Hono();
 
 // Public routes (no auth required)
 routes.route("/histories", historiesTotalRouter);
+routes.route("/chat", chatRouter);
 
 // Auth-required routes
 const authRoutes = new Hono();
 authRoutes.use("*", firebaseAuthMiddleware);
 authRoutes.route("/users/:userId", usersRouter);
 authRoutes.route("/users/:userId/histories", historiesRouter);
-authRoutes.route("/users/:userId/chat", chatRouter);
 routes.route("/", authRoutes);
 
 export default routes;
