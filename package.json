@@ -1,12 +1,12 @@
 {
   "name": "genuivo_api",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "private": true,
   "description": "Starter API - Hono backend with PostgreSQL + Drizzle ORM",
   "scripts": {
     "dev": "bun --watch src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
-    "start": "bun dist/index.js",
+    "start": "bun run src/index.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "bunx tsc --noEmit",
