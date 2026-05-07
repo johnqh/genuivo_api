@@ -1,6 +1,6 @@
 {
   "name": "genuivo_api",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "private": true,
   "description": "Starter API - Hono backend with PostgreSQL + Drizzle ORM",
   "scripts": {
@@ -17,9 +17,9 @@
     "verify": "bun run typecheck && bun run lint && bun run test && bun run build"
   },
   "dependencies": {
-    "@sudobility/auth_service": "^1.1.16",
-    "@sudobility/genuivo_types": "^0.0.15",
-    "@sudobility/types": "^1.9.61",
+    "@sudobility/auth_service": "^1.1.17",
+    "@sudobility/genuivo_types": "^0.0.16",
+    "@sudobility/types": "^1.9.62",
     "drizzle-orm": "^0.44.2",
     "firebase-admin": "^13.4.0",
     "hono": "^4.7.0",
