@@ -26,7 +26,4 @@ jobs:
     with:
       docker-image-name: "genuivo_api"
       skip-npm-publish: true # This is an API server, not an NPM library
-    secrets:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    secrets: inherit # Pass all repository secrets
