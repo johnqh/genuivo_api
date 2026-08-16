@@ -5,9 +5,9 @@
     "": {
       "name": "starter_api",
       "dependencies": {
-        "@sudobility/auth_service": "^1.1.17",
-        "@sudobility/genuivo_types": "^0.0.16",
-        "@sudobility/types": "^1.9.62",
+        "@sudobility/auth_service": "^1.1.19",
+        "@sudobility/genuivo_types": "^0.0.17",
+        "@sudobility/types": "^1.9.65",
         "drizzle-orm": "^0.44.2",
         "firebase-admin": "^13.4.0",
         "hono": "^4.7.0",
@@ -221,13 +221,13 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@sudobility/auth_service": ["@sudobility/auth_service@1.1.17", "", { "peerDependencies": { "@sudobility/types": "^1.9.62", "firebase-admin": "^13.0.0" } }, "sha512-RrjLMftyj2p7KCp09J7jPEuRzW+Jngsw7KwW/xLe76DdhtlTt6NK3sceT0VtQm9BfDs4WhsjY6AuyFYtX7gGAw=="],
+    "@sudobility/auth_service": ["@sudobility/auth_service@1.1.19", "", { "peerDependencies": { "@sudobility/types": "^1.9.65", "firebase-admin": "^13.0.0" } }, "sha512-wn4yUG6rlpc03uO8zPkqqEfRIhunOc9Ln8bcd2KR3/b5rbSjYsinryo7FrBQTp+HtVevk+3L0DPvU4oU8BNoaQ=="],
 
     "@sudobility/genui_types": ["@sudobility/genui_types@0.0.1", "", {}, "sha512-upYoJVpy2y+cgIW2TwJtMuPhxzis42Dk5X6UtViTSh61GwnWofwK2atXsOrtDXPFj9vMrxJOVEOEu8UDR90p7g=="],
 
-    "@sudobility/genuivo_types": ["@sudobility/genuivo_types@0.0.16", "", { "peerDependencies": { "@sudobility/genui_types": "^0.0.2", "@sudobility/types": "^1.9.62" } }, "sha512-oMkmpjKdWgZhnD9NRBvDKSIdM5ZuLp0Gj5idr4Z7FazUfV0Ee5GBd2UAiZ4xin2KmR1odX9zYJBf6/s9nRWKKA=="],
+    "@sudobility/genuivo_types": ["@sudobility/genuivo_types@0.0.17", "", { "peerDependencies": { "@sudobility/genui_types": "^0.0.2", "@sudobility/types": "^1.9.65" } }, "sha512-4NQnpECrfygngjC7L5A5gNxlVnstBpqOutRqhHJUK4Pg3nMAIGHpgmzAs2F/38d5KL3ch7T6fHhtNUPOCviHew=="],
 
-    "@sudobility/types": ["@sudobility/types@1.9.62", "", {}, "sha512-GOkz5oE7Fmlolba2aemBF2fKPtH4I2lHAjVta+fqZAoAV72DQaWYzVEjTwKZs/ACY/g9Z262IDa7lEh+IOrn7w=="],
+    "@sudobility/types": ["@sudobility/types@1.9.65", "", {}, "sha512-NSq2/naehtQO3s6uhCa9+zGLQZkPNYhlb9NUtjS704ppvc+UbtGoSAzNQGLORDbha2YGJORE3/xs2UARZQdroA=="],
 
     "@tootallnate/once": ["@tootallnate/once@2.0.0", "", {}, "sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A=="],
 
