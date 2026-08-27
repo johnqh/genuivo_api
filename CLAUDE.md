@@ -1,5 +1,10 @@
 # Genuivo API
 
+> **Git policy — never auto-commit or auto-push.** Leave your work in the working tree.
+> Run `git commit`, `git push`, `gh pr create`, or `scripts/push_all.sh` **only when the user
+> explicitly asks in that turn**. Approval for an earlier change does not carry forward, and
+> finishing a task is not permission to commit it.
+
 Backend API server for the Genuivo application.
 
 **Package**: `genuivo_api` (private, not published)
@@ -113,3 +118,7 @@ Uses `@sudobility/auth_service` for Firebase token verification with caching.
 - The `userId` in route paths (`:userId`) is the Firebase UID, not a database-generated ID
 - The DB Proxy pattern means connection errors only surface on first actual query, not at startup
 - `FIREBASE_PRIVATE_KEY` often needs newline escaping (`\\n` -> `\n`) depending on how it is set in the environment
+
+## Git Workflow
+
+- Do not use feature branches for code changes. Always stay on the current branch.
