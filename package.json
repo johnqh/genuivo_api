@@ -7,14 +7,15 @@
     "dev": "bun --watch src/index.ts",
     "build": "bun build src/index.ts --outdir dist --target bun",
     "start": "bun run src/index.ts",
-    "test": "vitest run",
+    "test:unit": "vitest run",
     "test:watch": "vitest",
     "typecheck": "bunx tsc --noEmit",
     "lint": "bunx eslint src/",
     "lint:fix": "bunx eslint src/ --fix",
     "format": "bunx prettier --write \"src/**/*.ts\"",
     "format:check": "bunx prettier --check \"src/**/*.ts\"",
-    "verify": "bun run typecheck && bun run lint && bun run test && bun run build"
+    "verify": "bun run typecheck && bun run lint && bun run test:unit && bun run build",
+    "test:db": "vitest run --config vitest.db.config.ts"
   },
   "dependencies": {
     "@sudobility/auth_service": "^1.1.21",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
+    "@sudobility/test-db-guard": "1.0.2",
     "@types/node": "^24.10.1",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
