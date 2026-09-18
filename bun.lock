@@ -15,6 +15,7 @@
       },
       "devDependencies": {
         "@eslint/js": "^9.38.0",
+        "@sudobility/test-db-guard": "1.0.2",
         "@types/node": "^24.10.1",
         "@typescript-eslint/eslint-plugin": "^8.46.2",
         "@typescript-eslint/parser": "^8.46.2",
@@ -226,6 +227,8 @@
     "@sudobility/genui_types": ["@sudobility/genui_types@0.0.1", "", {}, "sha512-upYoJVpy2y+cgIW2TwJtMuPhxzis42Dk5X6UtViTSh61GwnWofwK2atXsOrtDXPFj9vMrxJOVEOEu8UDR90p7g=="],
 
     "@sudobility/genuivo_types": ["@sudobility/genuivo_types@0.0.18", "", { "peerDependencies": { "@sudobility/genui_types": "^0.0.2", "@sudobility/types": "^1.9.67" } }, "sha512-WYmFKRa5Vfl231M/COF5dNZNHz4U6BoaAgDojIQm+2+FcSvZk5g+QmJqEAT2H29h2F7GBkXTAVSlPAJh976a9g=="],
+
+    "@sudobility/test-db-guard": ["@sudobility/test-db-guard@1.0.2", "", {}, "sha512-MFvX5e3VMprZLAw8iQIIfqZhy2Sod/wE6ytHBjMJHEE+IKHNSe9qPkXu6QpmZYVvwIOW7vOc84q0XkkKkF49Tw=="],
 
     "@sudobility/types": ["@sudobility/types@1.9.67", "", {}, "sha512-d+jk4L9i8VNvOnCJW/craqiiUTPH5aRq4KYe/QBrBU3mCcTfoYjgzzXopVQRcthiZ5dwQAEpdqCTQ0gAWRN6Ww=="],
 
